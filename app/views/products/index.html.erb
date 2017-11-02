@@ -1,0 +1,49 @@
+<div class="row form-horizontal">
+  <fieldset>
+    <legend>Buscar</legend>
+    <%= form_tag(products_index_path) do %>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Buscardor</label>
+      <div class="col-lg-8">
+        <%= text_field_tag :buscador, nil, placeholder: "Buscar nombre", class:"form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Filtro Precio</label>
+      <div class="col-lg-8">
+        <%= select_tag :filtro_precio, options_for_select([ "Todos","0..5000", "5001..10000", "10001..+" ], "Todos"), class:"form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <%= submit_tag "Buscar", class:"btn btn-primary" %>
+      </div>
+    </div>
+  </fieldset>
+  <% end -%>
+</div>
+<br>
+<div class="row form-horizontal">
+  <fieldset>
+    <legend>Buscar</legend>
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Prince</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td><%= product.category.name %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </fieldset>
+</div>
